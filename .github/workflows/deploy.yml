@@ -9,7 +9,7 @@ jobs: #prestar una maquina virtual para desplegar, que sea esa version de ubunut
   deploy:
     runs-on: ubuntu-latest
 
-    steps: #descargar codgio en maquina virtual
+    steps: #descargar codgio en maquina virtual J
       - name: Checkout Code
         uses: actions/checkout@v4
 
