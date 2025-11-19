@@ -1,0 +1,23 @@
+name: UPB desplegando a un EC2
+
+on:
+  push:
+    branches:
+      - main 
+ 
+jobs: #prestar una maquina virtual para desplegar, que sea esa version de ubunut
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps: #descargar codgio en maquina virtual
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Copy files via SCP
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_KEY }}
+          source: "index.html"
+          target: "/var/www/html"
